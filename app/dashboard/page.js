@@ -50,7 +50,7 @@ export default function DashboardPage() {
       const textOnes = (dataText.interviews || []).map((x) => ({ ...x, kind: 'TEXT' }))
       const liveOnes = (dataLive.sessions || []).map((x) => ({ ...x, kind: 'LIVE' }))
       const merged = [...textOnes, ...liveOnes].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
-      
+
       setInterviews(merged)
     } catch (err) {
       if (err.name !== 'AbortError') {
@@ -79,7 +79,7 @@ export default function DashboardPage() {
 
     // Optimistic UI update for instant enterprise snappiness
     setInterviews((list) => list.filter((x) => !(x.id === item.id && x.kind === item.kind)))
-    
+
     toast.promise(fetch(url, { method: 'DELETE' }), {
       loading: 'Removing session transcript from archive...',
       success: 'Session transcript permanently deleted.',
@@ -101,7 +101,7 @@ export default function DashboardPage() {
     return i.status === 'COMPLETED' || (i.questions && i.questions.some(q => q.answer))
   })
   const completedWithScores = interviews.filter((i) => i.overall != null && i.overall > 0)
-  
+
   const avgScore = completedWithScores.length > 0
     ? Math.round(completedWithScores.reduce((acc, curr) => acc + curr.overall, 0) / completedWithScores.length)
     : 0
@@ -135,7 +135,7 @@ export default function DashboardPage() {
           !searchQuery.trim() ||
           (i.role && i.role.toLowerCase().includes(searchQuery.toLowerCase())) ||
           (i.level && i.level.toLowerCase().includes(searchQuery.toLowerCase()))
-        
+
         const isCompleted = i.kind === 'LIVE' ? i.reportStatus === 'READY' : i.status === 'COMPLETED'
         const matchesStatus = statusFilter === 'ALL' ||
           (statusFilter === 'COMPLETED' && isCompleted) ||
@@ -442,25 +442,22 @@ export default function DashboardPage() {
               <div className="flex bg-neutral-900/90 p-1 rounded-xl border border-white/10 text-xs font-bold">
                 <button
                   onClick={() => setStatusFilter('ALL')}
-                  className={`px-3 py-1.5 rounded-lg transition-all ${
-                    statusFilter === 'ALL' ? 'bg-white/15 text-white shadow' : 'text-neutral-400 hover:text-white'
-                  }`}
+                  className={`px-3 py-1.5 rounded-lg transition-all ${statusFilter === 'ALL' ? 'bg-white/15 text-white shadow' : 'text-neutral-400 hover:text-white'
+                    }`}
                 >
                   Status: All
                 </button>
                 <button
                   onClick={() => setStatusFilter('COMPLETED')}
-                  className={`px-3 py-1.5 rounded-lg transition-all ${
-                    statusFilter === 'COMPLETED' ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30' : 'text-neutral-400 hover:text-white'
-                  }`}
+                  className={`px-3 py-1.5 rounded-lg transition-all ${statusFilter === 'COMPLETED' ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30' : 'text-neutral-400 hover:text-white'
+                    }`}
                 >
                   Completed
                 </button>
                 <button
                   onClick={() => setStatusFilter('IN_PROGRESS')}
-                  className={`px-3 py-1.5 rounded-lg transition-all ${
-                    statusFilter === 'IN_PROGRESS' ? 'bg-amber-500/20 text-amber-400 border border-amber-500/30' : 'text-neutral-400 hover:text-white'
-                  }`}
+                  className={`px-3 py-1.5 rounded-lg transition-all ${statusFilter === 'IN_PROGRESS' ? 'bg-amber-500/20 text-amber-400 border border-amber-500/30' : 'text-neutral-400 hover:text-white'
+                    }`}
                 >
                   In Progress
                 </button>
@@ -481,25 +478,22 @@ export default function DashboardPage() {
               <div className="flex bg-neutral-900/90 p-1 rounded-xl border border-white/10 text-xs font-bold">
                 <button
                   onClick={() => setActiveTab('ALL')}
-                  className={`px-3 py-1.5 rounded-lg transition-all ${
-                    activeTab === 'ALL' ? 'bg-purple-500 text-white shadow' : 'text-neutral-400 hover:text-white'
-                  }`}
+                  className={`px-3 py-1.5 rounded-lg transition-all ${activeTab === 'ALL' ? 'bg-purple-500 text-white shadow' : 'text-neutral-400 hover:text-white'
+                    }`}
                 >
                   All ({interviews.length})
                 </button>
                 <button
                   onClick={() => setActiveTab('TEXT')}
-                  className={`px-3 py-1.5 rounded-lg transition-all ${
-                    activeTab === 'TEXT' ? 'bg-purple-500 text-white shadow' : 'text-neutral-400 hover:text-white'
-                  }`}
+                  className={`px-3 py-1.5 rounded-lg transition-all ${activeTab === 'TEXT' ? 'bg-purple-500 text-white shadow' : 'text-neutral-400 hover:text-white'
+                    }`}
                 >
                   Text ({interviews.filter((i) => i.kind === 'TEXT').length})
                 </button>
                 <button
                   onClick={() => setActiveTab('LIVE')}
-                  className={`px-3 py-1.5 rounded-lg transition-all ${
-                    activeTab === 'LIVE' ? 'bg-purple-500 text-white shadow' : 'text-neutral-400 hover:text-white'
-                  }`}
+                  className={`px-3 py-1.5 rounded-lg transition-all ${activeTab === 'LIVE' ? 'bg-purple-500 text-white shadow' : 'text-neutral-400 hover:text-white'
+                    }`}
                 >
                   Live ({interviews.filter((i) => i.kind === 'LIVE').length})
                 </button>
@@ -575,30 +569,29 @@ export default function DashboardPage() {
                   displayScore == null
                     ? 'from-purple-500 to-indigo-500 text-purple-300 border-purple-500/30'
                     : displayScore >= 80
-                    ? 'from-emerald-500 to-teal-600 text-emerald-400 border-emerald-500/40'
-                    : displayScore >= 60
-                    ? 'from-amber-500 to-yellow-600 text-amber-400 border-amber-500/40'
-                    : 'from-rose-500 to-red-600 text-rose-400 border-rose-500/40'
+                      ? 'from-emerald-500 to-teal-600 text-emerald-400 border-emerald-500/40'
+                      : displayScore >= 60
+                        ? 'from-amber-500 to-yellow-600 text-amber-400 border-amber-500/40'
+                        : 'from-rose-500 to-red-600 text-rose-400 border-rose-500/40'
                 const linkTo = isLive
                   ? reportReady || reportFailed
                     ? `/live/${i.id}/report`
                     : reportPending
-                    ? `/live/${i.id}/report`
-                    : `/live/${i.id}`
+                      ? `/live/${i.id}/report`
+                      : `/live/${i.id}`
                   : i.status === 'COMPLETED'
-                  ? `/interview/${i.id}/report`
-                  : `/interview/${i.id}`
+                    ? `/interview/${i.id}/report`
+                    : `/interview/${i.id}`
 
                 return (
                   <motion.div key={`${i.kind}-${i.id}`} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.04 }}>
                     <Link
                       href={linkTo}
-                      className={`group block glass rounded-3xl border p-6 transition-all hover:-translate-y-1 relative overflow-hidden shadow-xl ${
-                        isLive ? 'border-rose-500/25 hover:border-rose-500/60 hover:shadow-rose-500/10' : 'border-white/10 hover:border-purple-500/60 hover:shadow-purple-500/10'
-                      }`}
+                      className={`group block glass rounded-3xl border p-6 transition-all hover:-translate-y-1 relative overflow-hidden shadow-xl ${isLive ? 'border-rose-500/25 hover:border-rose-500/60 hover:shadow-rose-500/10' : 'border-white/10 hover:border-purple-500/60 hover:shadow-purple-500/10'
+                        }`}
                     >
                       <div className={`absolute -top-20 -right-20 h-40 w-40 rounded-full blur-3xl transition-colors pointer-events-none ${isLive ? 'bg-rose-500/10 group-hover:bg-rose-500/25' : 'bg-purple-500/10 group-hover:bg-purple-500/25'}`} />
-                      
+
                       <div className="relative z-10 flex flex-col justify-between h-full space-y-4">
                         <div className="flex items-center justify-between text-xs">
                           <div className="flex items-center gap-2">
