@@ -23,15 +23,15 @@ export function Footer() {
               The enterprise-grade AI career coaching platform. Practice technical & behavioral mock interviews with realistic AI evaluators and optimize your resume against rigorous ATS rules.
             </p>
             <div className="flex items-center gap-3 text-neutral-400">
-              <span className="h-8 w-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:text-white hover:border-purple-500/50 transition-colors cursor-pointer">
+              <button type="button" aria-label="GitHub" className="h-8 w-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:text-white hover:border-purple-500/50 transition-colors cursor-pointer">
                 <Github className="h-4 w-4" />
-              </span>
-              <span className="h-8 w-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:text-white hover:border-purple-500/50 transition-colors cursor-pointer">
+              </button>
+              <button type="button" aria-label="Twitter" className="h-8 w-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:text-white hover:border-purple-500/50 transition-colors cursor-pointer">
                 <Twitter className="h-4 w-4" />
-              </span>
-              <span className="h-8 w-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:text-white hover:border-purple-500/50 transition-colors cursor-pointer">
+              </button>
+              <button type="button" aria-label="LinkedIn" className="h-8 w-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:text-white hover:border-purple-500/50 transition-colors cursor-pointer">
                 <Linkedin className="h-4 w-4" />
-              </span>
+              </button>
             </div>
           </div>
 
