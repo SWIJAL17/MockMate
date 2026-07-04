@@ -1,5 +1,5 @@
 const nextConfig = {
-  output: 'standalone',
+  // output: 'standalone', // Commented out for Vercel compatibility (Vercel uses its own serverless builder)
   images: {
     unoptimized: true,
     remotePatterns: [
