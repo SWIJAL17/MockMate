@@ -120,7 +120,7 @@ export class VerificationAndStressTestService {
   /**
    * Test 4: Stress Test Multi-Column 100+ Page Document at 60 FPS
    */
-  async runStressTest(numPages = 100, objectsPerPage = 50): StressTestReport {
+  async runStressTest(numPages = 100, objectsPerPage = 50): Promise<StressTestReport> {
     const start = performance.now();
     const totalObjects = numPages * objectsPerPage;
     const mockObjects: DocumentObject[] = [];
