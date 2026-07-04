@@ -32,6 +32,7 @@ export function PersonaPicker({ value, onChange }) {
         const selected = value === p.replica_id
         return (
           <motion.button key={p.replica_id} type="button" onClick={() => onChange?.(p.replica_id)}
+            aria-label={`Select interviewer ${p.name}`} aria-pressed={selected}
             whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}
             className={cn('relative rounded-xl overflow-hidden border-2 transition-all aspect-[3/4]',
               selected ? 'border-rose-500 shadow-lg shadow-rose-500/30' : 'border-white/10 hover:border-white/30')}>
