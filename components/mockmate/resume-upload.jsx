@@ -35,7 +35,7 @@ export function ResumeUpload({ onExtracted, accent = 'purple' }) {
     <div className="flex items-center gap-2">
       <input ref={inputRef} type="file" accept="application/pdf,.pdf" className="hidden"
         onChange={(e) => handleFile(e.target.files?.[0])} />
-      <button type="button" onClick={() => inputRef.current?.click()} disabled={uploading}
+      <button type="button" onClick={() => inputRef.current?.click()} disabled={uploading} aria-label="Upload PDF resume"
         className={`inline-flex items-center gap-1.5 text-xs rounded-md border border-white/10 bg-white/[0.03] hover:bg-white/[0.08] hover:border-${c}-500/50 px-3 py-1.5 transition-colors disabled:opacity-50`}>
         {uploading ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <Upload className="h-3.5 w-3.5" />}
         {uploading ? 'Extracting…' : 'Upload PDF resume'}

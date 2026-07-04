@@ -27,6 +27,7 @@ export function UserMenu() {
   return (
     <div className="relative" onClick={(e) => e.stopPropagation()}>
       <button onClick={() => setOpen(o => !o)}
+        aria-label="User profile menu" aria-expanded={open} aria-haspopup="true"
         className="flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] hover:bg-white/[0.06] pl-1 pr-3 py-1 transition-colors">
         <div className="h-8 w-8 rounded-full bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 flex items-center justify-center text-xs font-bold text-white">
           {initials}
